@@ -1,0 +1,35 @@
+.hidden {
+  display: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.item {
+  flex-grow: 1
+}
+
+header ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+header ul li {
+  list-style: none;
+}
+
+
+
+
+
+
+@media all and (min-width: 800px){
+  .container {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

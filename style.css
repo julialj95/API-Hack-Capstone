@@ -5,12 +5,16 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-content: center;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .item {
-  flex-grow: 1
+  margin: 10px 0 10px 0;
+  padding: 10px 0 10px 0;
+  text-align: center;
 }
 
 header ul {
@@ -27,9 +31,9 @@ header ul li {
 
 
 
-@media all and (min-width: 800px){
+/* @media all and (min-width: 800px){
   .container {
-    flex-direction: row;
+    /* flex-direction: row; 
     justify-content: space-around;
   }
-}
+} */

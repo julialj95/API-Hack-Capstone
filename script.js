@@ -43,7 +43,7 @@ function getRecInfo(recTitleJson){
   console.log(recTitleJson)
 
   const recInfoBaseUrl = 'https://www.googleapis.com/books/v1/volumes'
-  const googleApiKey = 
+  const googleApiKey = 'AIzaSyDEde2t4gSXAMcNjSVn56s2RfIu6G7R5ZM'
   const recInfoArray = [];
   for (let i = 0; i < recTitleJson.Similar.Results.length; i++){
   

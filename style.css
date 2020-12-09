@@ -17,6 +17,13 @@
   text-align: center;
 }
 
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
 header ul {
   display: flex;
   flex-direction: row;

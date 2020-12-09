@@ -58,7 +58,7 @@ function getRecInfo(recTitleJson){
   }
 Promise.all(recInfoArray)
   .then(results => {
-  return Promise.all(results.map(r => r.json()))
+  return Promise.all(results.map(recInfo => recInfo.json()))
   })
   .then(jsonRecs => {
   console.log(jsonRecs)
@@ -87,49 +87,45 @@ function displayRecResults(resultsJson){
   for (let i = 0; i < 12; i++){
   $("#js-rec-results").append(`
   <div class="item">
-    <h2>${resultsJson[i].items[0].volumeInfo.title}</h2>
+    <h2 class="js-book-title">${resultsJson[i].items[0].volumeInfo.title}</h2>
     <h3>${resultsJson[i].items[0].volumeInfo.authors}</h3>
     <img src="${resultsJson[i].items[0].volumeInfo.imageLinks.thumbnail}" alt="${resultsJson[i].items[0].volumeInfo.title} cover photo">
     <p>${resultsJson[i].items[0].volumeInfo.description}</p>
-    <a href="shop.html">Shop this book</a>
+    <button class="js-shop" id="${i}">Shop this book</button>
   </div>`)}
   $('.results').removeClass('hidden')
   }
 
 
 
-// function watchShopLinkOnRecPage(){
-//   $("#").on('click', event=> {
-//     event.preventDefault;
-//     getBooksToBuy(recResponseJson)
-//   })
-// }
+function watchShopLinkOnRecPage(){
+  $('body').on('click','button.js-shop', event=> {
+    event.preventDefault
+    console.log('clicked')
+    const shopSearchNumber = $(this).attr('id');
+    console.log(shopSearchNumber)
+    // getShopInfo(shopSearchNumber)
+    
+  })
+}
 
-// function getBooksToBuy(shopSearchTerm){
-//   const shopSearchUrl = 'https://www.googleapis.com/books/v1/volumes'
-//   const googleApiKey = 'AIzaSyDEde2t4gSXAMcNjSVn56s2RfIu6G7R5ZM'
+// function getShopInfo(resultsJson, shopSearchNumber){
+//   console.log(resultsJson[shopSearchNumber])
+//   for (let i = 0; i < resultsJson[shopSearchNumber].length; i++){
 
-//   const googleParams = {
-//     q: shopSearchTerm + '+intitle:',
-//     printType: 'books',
-//     key: googleApiKey
+//     $("#js-shop-results").append(`
+//     <div class="container">
+//       <h2>Title</h2>
+//       <h3>Price</h3>
+//       <h3>seller</h3>
+//       <a href="">Buy this book</a>
+//     `)
 //   }
-
-//   const shopQueryString = formatShopQueryParams(googleParams)
-//   const url = shopSearchUrl + '?' + shopQueryString
-//   console.log(url)
-
-//   fetch(url)
-//   .then(shopResponse => shopResponse.json())
-//   .then(shopResonseJson => console.log(shopResonseJson))
-//   .catch(err => console.log(err))
+//   $("#js-shop-results").removeClass('hidden')
 
 // }
 
-// function formatShopQueryParams(googleParams){
-//   const shopQueryItems = Object.keys(googleParams).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(googleParams[key])}`)
-//   return shopQueryItems.join('&')
-// }
+
 
 // function watchShopForm(){
 //   $('#book-shop-form').submit(event => {
@@ -152,26 +148,9 @@ function displayRecResults(resultsJson){
 //   }
 // }
 
-// function getCarbonOffsetData(){
-//   const apiKey = 'aQLGLDqsUuR5GPHa3OSVZQ'
-//   const searchUrl = 'https://www.carboninterface.com/api/v1/estimates'
 
-//   const options = {
-//     header: new Headers({
-//       Authorization: 'Bearer ' + apiKey
-//     })
-//   }
-// }
-
-// function watchCarbonForm(){
-
-// }
-
-// function formatCarbonQueryParams(carbonQueryParams){
-
-// }
 
 
 
   $(watchRecForm)
-  // $(watchShopForm)
+ $(watchShopLinkOnRecPage)

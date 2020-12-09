@@ -9,17 +9,22 @@
 <body>
   <header>
     <ul>
-      <li>Recommendations</li>
-      <li>Shop for Books</li>
-      <li>Carbon-Offset</li>
+      <li>
+        <a href="search.html">Get Book Recommendations</a>
+      </li>
+      <li>
+        <a href="shop.html">Shop for Books</a>
+      </li>
     </ul>
   </header>
   <main>
+    <div class="container">
     <form id="js-book-search-form">
       <label for="book-search">Search for book recommendations</label>
         <input type="text" name="book-search" id="js-search-term" required>
       <button>Submit</button>
     </form>
+    </div>
     <div class="hidden results" id="js-rec-results"></div>
   </main>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>

@@ -8,22 +8,25 @@
 </head>
 <body>
   <header>
-    <!-- <ul> -->
-      <!-- <li>
-        <a href="search.html">Get Book Recommendations</a>
-      </li> -->
-    <!-- </ul> -->
+    <div class="container">
+      <h1>Book Recommendation App</h1>
+    </div>
   </header>
   <main>
     <div class="container">
     <form id="js-book-search-form">
-      <label for="book-search">Search for book recommendations</label>
-        <input type="text" name="book-search" id="js-search-term" required>
+      <label for="book-search">Search a book that you enjoy!<br>*Use a complete book title</label><br>
+        <input type="text" name="book-search" id="js-search-term" autofocus="on" placeholder="Harry Potter and the Sorcerer's Stone"required><br>
       <button>Submit</button>
     </form>
     </div>
     <div class="hidden loading">Loading results...</div>
     <div class="hidden results" id="js-rec-results"></div>
+    <div class="hidden shop" id="js-shop-results">
+      <div class="container">
+        <h1>Buying Options:</h1>
+      </div>
+    </div>
   </main>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script src="script.js"></script>

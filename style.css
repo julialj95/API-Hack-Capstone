@@ -5,6 +5,19 @@
   display: none;
 }
 
+/* form label {
+  display: block;
+  width: 50%;
+} */
+
+form input {
+  display: block;
+  width: 50%;
+  margin: 10px auto;
+  padding: 5px;
+
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -12,6 +25,7 @@
   align-content: center;
   max-width: 500px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .results {
@@ -22,8 +36,7 @@
 
 .shop-results {
   display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+  flex-direction: row;
   justify-content: space-around;
 }
 
@@ -38,7 +51,7 @@
   margin: 10px 0 10px 0;
   padding: 10px 0 10px 0;
   text-align: center;
-  
+  flex: 0 auto;
 }
 
 

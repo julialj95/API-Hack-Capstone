@@ -42,12 +42,15 @@ function insertScript(recSearchTerm){
 
 
 function getRecInfo(recTitleJson){
-  console.log(recTitleJson)
-
+  if (recTitleJson.Similar.Results.length === 0){
+    $(".loading").addClass('hidden')
+    $(".results").html("<p>Sorry! No results were found for that search. Try a different book title.</p>")
+  }
+  else {
   const recInfoBaseUrl = 'https://www.googleapis.com/books/v1/volumes'
   const googleApiKey = 'AIzaSyDEde2t4gSXAMcNjSVn56s2RfIu6G7R5ZM'
   const recInfoArray = [];
-  for (let i = 0; i < 4; i++){
+  for (let i = 0; i < 12; i++){
     // recTitleJson.Similar.Results.length
     const recInfoParams = {
     q: recTitleJson.Similar.Results[i].Name,
@@ -69,6 +72,7 @@ Promise.all(recInfoArray)
   displayRecResults(jsonRecs)
   })
   .catch(err => console.log(err))
+  }
 }
 
 
@@ -84,14 +88,18 @@ function watchRecForm(){
     const recSearchTerm = $("#js-search-term").val()
     insertScript(recSearchTerm)
     getRecTitlesUrl(recSearchTerm)
-
+    $('#js-search-term').val('')
+    $(".shop").addClass('hidden')
+    $("#js-shop-results").html(`<div class="container">
+    <h1>Buying Options:</h1>
+    </div>`)
   })
 }
 
 function displayRecResults(resultsJson){
   $(".loading").addClass('hidden')
   $("#js-rec-results").empty()
-  for (let i = 0; i < 4; i++){
+  for (let i = 0; i < 12; i++){
   $("#js-rec-results").append(`
   <div class="item">
     <h2 class="js-book-title">${resultsJson[i].items[0].volumeInfo.title}</h2>
@@ -100,17 +108,21 @@ function displayRecResults(resultsJson){
     <p>${resultsJson[i].items[0].volumeInfo.description}</p>
     <button class="js-shop">Shop this book</button>
     <div class="hidden-id">${i}</div>
-    <div class="hidden shop-results" id="js-shop-results"></div>
+    <div class="hidden"><p>Scroll down to see results</p></div>
+    
   </div>`)}
   $('.results').removeClass('hidden')
   }
 
-
+{/* <div class="hidden shop-results" id="js-shop-results"></div> */}
 
 function watchShopLinkOnRecPage(){
   $('body').on('click','button.js-shop', event=> {
     event.preventDefault
-    console.log('clicked')
+    $("#js-shop-results").html(`<div class="container">
+    <h1>Buying Options:</h1>
+  </div>`)
+    $(event.currentTarget).next().next().removeClass('hidden')
     const shopSearchNumber = $(event.currentTarget).next().text()
     console.log(shopSearchNumber)
     displayShopResults(bookResults, shopSearchNumber)
@@ -120,10 +132,14 @@ function watchShopLinkOnRecPage(){
 
 function displayShopResults(bookResults, shopSearchNumber){
   console.log(bookResults[shopSearchNumber])
+  let shopCounter = 0
   for (let i = 0; i < bookResults[shopSearchNumber].items.length; i++) {
     const titleToMatch = bookResults[shopSearchNumber].items[0].volumeInfo.title
     const currentTitle = bookResults[shopSearchNumber].items[i].volumeInfo.title
+    
     if(bookResults[shopSearchNumber].items[i].saleInfo.saleability === "FOR_SALE" && currentTitle.includes(titleToMatch)) {
+    shopCounter = shopCounter + 1
+    console.log('appending')
     $("#js-shop-results").append(`
     <div class="shop-item">
       <h2>Title: ${currentTitle}</h2>
@@ -133,7 +149,17 @@ function displayShopResults(bookResults, shopSearchNumber){
     `)
     }
   }
-  $("#js-shop-results").removeClass('hidden')
+  $("#js-shop-results").removeClass("hidden")
+  errorMessage(shopCounter)
+}
+
+function errorMessage(shopCounter){
+  if (shopCounter === 0){
+    $("#js-shop-results").append(`
+    <div class="shop-item">
+      <p>Sorry! That book is not currently for sale.</p>
+    </div>`)
+  }
 }
 
 $(watchRecForm)

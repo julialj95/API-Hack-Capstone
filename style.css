@@ -1,6 +1,9 @@
 .hidden {
   display: none;
 }
+.hidden-id {
+  display: none;
+}
 
 .container {
   display: flex;
@@ -11,6 +14,19 @@
   margin: 0 auto;
 }
 
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.shop-results {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+}
+
 .item {
   margin: 10px 0 10px 0;
   padding: 10px 0 10px 0;
@@ -18,11 +34,14 @@
   flex: 0 32%;
 }
 
-.results {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.shop-item {
+  margin: 10px 0 10px 0;
+  padding: 10px 0 10px 0;
+  text-align: center;
+  
 }
+
+
 
 header ul {
   display: flex;

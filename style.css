@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Exo&family=Josefin+Slab&family=Julius+Sans+One&family=Philosopher&family=Quattrocento:wght@700&family=Raleway:wght@500&family=Saira+Condensed:wght@500&display=swap');
+
+h1, h2, h3, h4, a {
+  font-family: 'Julius Sans One';
+  color: white;
+}
+h1 {
+  font-size: 48px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+p {
+  font-size: 22px;
+  font-family: "exo";
+  color: white;
+}
+
+form label {
+  font-size: 24px;
+  font-family: 'Julius Sans One';
+  color: white;
+}
+/* form {
+
+} */
+
 .hidden {
   display: none;
 }
@@ -5,17 +39,33 @@
   display: none;
 }
 
-/* form label {
-  display: block;
-  width: 50%;
-} */
-
+.bg-image {
+  background-image: url(curved-library-1.jpg);
+  background-size: cover;
+}
 form input {
   display: block;
-  width: 50%;
+  width: 70%;
   margin: 10px auto;
   padding: 5px;
+  font-family: 'Raleway';
+  font-size: 18px;
 
+}
+
+#submit-button {
+  cursor: pointer;
+
+}
+
+button {
+  font-family: 'Raleway';
+  font-size: 20px;
+  border: solid 1px black;
+  border-radius: 5px;
+  color: white;
+  background-color: purple;
+  padding: 5px;
 }
 
 .container {
@@ -24,7 +74,7 @@ form input {
   justify-content: center;
   align-content: center;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 50px auto;
   text-align: center;
 }
 
@@ -70,6 +120,22 @@ header ul li {
 }
 
 
+
+.bg-box {
+  border: solid;
+  border-color: white;
+  background-color: rgba(0,0,0,0.8);
+  padding: 15px 30px 15px 30px;
+  border-radius: 15px;
+}
+
+.recBox {
+  border: solid;
+  border-color: white;
+  background-color: rgba(0,0,0,0.8);
+  padding: 5px;
+  border-radius: 12px;
+}
 
 
 /* @media all and (min-width: 800px){

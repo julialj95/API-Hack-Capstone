@@ -101,7 +101,7 @@ function displayRecResults(resultsJson){
   $("#js-rec-results").empty()
   for (let i = 0; i < 12; i++){
   $("#js-rec-results").append(`
-  <div class="item">
+  <div class="item recBox">
     <h2 class="js-book-title">${resultsJson[i].items[0].volumeInfo.title}</h2>
     <h3>${resultsJson[i].items[0].volumeInfo.authors}</h3>
     <img src="${resultsJson[i].items[0].volumeInfo.imageLinks.thumbnail}" alt="${resultsJson[i].items[0].volumeInfo.title} cover photo">
@@ -141,7 +141,7 @@ function displayShopResults(bookResults, shopSearchNumber){
     shopCounter = shopCounter + 1
     console.log('appending')
     $("#js-shop-results").append(`
-    <div class="shop-item">
+    <div class="shop-item bg-box">
       <h2>Title: ${currentTitle}</h2>
       <h3>Price: ${bookResults[shopSearchNumber].items[i].saleInfo.listPrice.amount} ${bookResults[shopSearchNumber].items[i].saleInfo.listPrice.currencyCode}</h3>
       <a href="${bookResults[shopSearchNumber].items[i].saleInfo.buyLink}" target="_blank">Buy this book on Google</a>

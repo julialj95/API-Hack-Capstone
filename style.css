@@ -1,37 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Exo&family=Josefin+Slab&family=Julius+Sans+One&family=Philosopher&family=Quattrocento:wght@700&family=Raleway:wght@500&family=Saira+Condensed:wght@500&display=swap');
+
+/* font family, size and color */
+@import url('https://fonts.googleapis.com/css2?family=Exo&family=Josefin+Slab&family=Julius+Sans+One&family=Raleway:wght@500&display=swap');
 
 h1, h2, h3, h4, a {
   font-family: 'Julius Sans One';
   color: white;
 }
 h1 {
-  font-size: 48px;
+  font-size: 36px;
   text-align: center;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 17px;
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 14px;
 }
 
 p {
-  font-size: 22px;
+  font-size: 13px;
   font-family: "exo";
   color: white;
 }
 
 form label {
-  font-size: 24px;
+  font-size: 13px;
   font-family: 'Julius Sans One';
   color: white;
 }
-/* form {
 
-} */
+form input {
+  display: block;
+  width: 70%;
+  margin: 10px auto;
+  padding: 5px;
+  font-family: 'Raleway';
+  font-size: 12px;
 
+}
+
+.dark-font {
+  color: black;
+}
+.light-font {
+  color: white;
+}
+
+/* display visibility manipulation */
 .hidden {
   display: none;
 }
@@ -39,35 +56,38 @@ form label {
   display: none;
 }
 
-.bg-image {
+/* background */
+.bg-start-image {
   background-image: url(curved-library-1.jpg);
   background-size: cover;
 }
-form input {
-  display: block;
-  width: 70%;
-  margin: 10px auto;
-  padding: 5px;
-  font-family: 'Raleway';
-  font-size: 18px;
 
+.bg-search-image {
+  background-image: url(dark-library.jpg);
+  background-size: cover;
 }
 
-#submit-button {
+
+/* button styling */
+#submit-button, .js-shop {
   cursor: pointer;
 
 }
 
-button {
+button, a {
   font-family: 'Raleway';
-  font-size: 20px;
-  border: solid 1px black;
+  font-size: 12px;
+  border: solid 2px black;
   border-radius: 5px;
   color: white;
   background-color: purple;
-  padding: 5px;
+  padding: 2px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
+
+/* flexbox styling */
 .container {
   display: flex;
   flex-direction: column;
@@ -80,8 +100,7 @@ button {
 
 .results {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column; 
 }
 
 .shop-results {
@@ -94,7 +113,7 @@ button {
   margin: 10px 0 10px 0;
   padding: 10px 0 10px 0;
   text-align: center;
-  flex: 0 32%;
+  /* flex: 0 30%; */
 }
 
 .shop-item {
@@ -105,22 +124,7 @@ button {
 }
 
 
-
-header ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-header ul li {
-  list-style: none;
-}
-
-.result-number {
-  flex: auto;
-}
-
-
-
+/* bordered display boxes */
 .bg-box {
   border: solid;
   border-color: white;
@@ -133,14 +137,162 @@ header ul li {
   border: solid;
   border-color: white;
   background-color: rgba(0,0,0,0.8);
-  padding: 5px;
+  padding: 10px;
   border-radius: 12px;
 }
 
+.shop-box {
+  border: solid;
+  border-color: white;
+  background-color: #C2BBF0;
+  padding: 10px;
+  border-radius: 15px;
+}
 
-/* @media all and (min-width: 800px){
-  .container {
-    /* flex-direction: row; 
-    justify-content: space-around;
+.loadingBox {
+  border: solid;
+  border-color: black;
+  background-color: #ffffff;
+  opacity: 0.6;
+  text-align: center;
+}
+
+/* ipad size styling */
+@media all and (min-width: 600px){
+  h1 {
+    font-size: 40px;
   }
-} */
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 15px;
+  }
+  p {
+    font-size: 14px;
+  }
+  form label {
+    font-size: 14px;
+  }
+  form input {
+    font-size: 13px;
+  }
+  button, a {
+    font-size: 12px;
+    padding: 3px;
+  }
+  .item {
+    margin: 10px 0 10px 0;
+    padding: 10px 0 10px 0;
+    text-align: center;
+    flex: 0 50%;
+  }
+}
+@media all and (min-width: 768px){
+  h1 {
+    font-size: 44px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 16px;
+  }
+  form label {
+    font-size: 17px;
+  }
+  form input {
+    font-size: 14px;
+  }
+  button, a {
+    font-size: 14px;
+    padding: 3px;
+  }
+  .results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+  }
+
+  .item {
+    margin: 10px 0 10px 0;
+    padding: 10px 0 10px 0;
+    text-align: center;
+    flex: 0 30%;
+  }
+} 
+@media all and (min-width: 992px){
+  h1 {
+    font-size: 50px;
+  }
+  h2 {
+    font-size: 26px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 18px;
+  }
+  form label {
+    font-size: 20px;
+  }
+  form input {
+    font-size: 16px;
+  }
+  button, a {
+    font-size: 17px;
+    padding: 5px;
+  }
+
+  .results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+  }
+  .item {
+    margin: 10px 0 10px 0;
+    padding: 10px 0 10px 0;
+    text-align: center;
+    flex: 0 30%;
+  }
+
+}
+@media all and (min-width: 1200px){
+  h1 {
+    font-size: 56px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  p {
+    font-size: 20px;
+  }
+  form label {
+    font-size: 24px;
+  }
+  form input {
+    font-size: 18px;
+  }
+  button, a {
+    font-size: 20px;
+    padding: 5px;
+  }
+  .results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+  }
+  .item {
+    margin: 10px 0 10px 0;
+    padding: 10px 0 10px 0;
+    text-align: center;
+    flex: 0 30%;
+  }
+}

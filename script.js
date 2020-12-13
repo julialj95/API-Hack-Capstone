@@ -1,3 +1,4 @@
+// holds results from google books API call to avoid needing a second call when retrieving sales information //
 let bookResults = []
 
 function getRecTitlesUrl(recSearchTerm){
@@ -14,7 +15,6 @@ function getRecTitlesUrl(recSearchTerm){
 
   const queryString = formatRecQueryParams(recParams)
   const recUrl = searchUrl + '?' + queryString
-  console.log(recUrl)
   return recUrl
 }
 
@@ -23,7 +23,7 @@ function formatRecQueryParams(recParams){
   return recQueryItems.join('&')
 }
 
-
+// for jsonp callback needed with tastedive api//
 function insertScript(recSearchTerm){
     const newScriptElement = document.createElement('script');
     newScriptElement.setAttribute('src', getRecTitlesUrl(recSearchTerm));
@@ -51,7 +51,6 @@ function getRecInfo(recTitleJson){
   const googleApiKey = 'AIzaSyDEde2t4gSXAMcNjSVn56s2RfIu6G7R5ZM'
   const recInfoArray = [];
   for (let i = 0; i < 12; i++){
-    // recTitleJson.Similar.Results.length
     const recInfoParams = {
     q: recTitleJson.Similar.Results[i].Name,
     printType: 'books',
@@ -67,11 +66,10 @@ Promise.all(recInfoArray)
   return Promise.all(results.map(recInfo => recInfo.json()))
   })
   .then(jsonRecs => {
-  console.log(jsonRecs)
   bookResults = jsonRecs
   displayRecResults(jsonRecs)
   })
-  .catch(err => console.log(err))
+  .catch(err => alert(err))
   }
 }
 
@@ -117,14 +115,12 @@ function watchShopLinkOnRecPage(){
     $(event.currentTarget).next().next().removeClass('hidden')
     const shopSearchNumber = $(event.currentTarget).next().text()
     const shopDisplay = $(event.currentTarget).next().next()
-    console.log(shopSearchNumber)
     displayShopResults(bookResults, shopSearchNumber, shopDisplay)
     
   })
 }
 
 function displayShopResults(bookResults, shopSearchNumber, shopDisplay){
-  console.log(bookResults[shopSearchNumber])
   let shopCounter = 0
   for (let i = 0; i < bookResults[shopSearchNumber].items.length; i++) {
     const titleToMatch = bookResults[shopSearchNumber].items[0].volumeInfo.title
@@ -132,12 +128,11 @@ function displayShopResults(bookResults, shopSearchNumber, shopDisplay){
     
     if(bookResults[shopSearchNumber].items[i].saleInfo.saleability === "FOR_SALE" && currentTitle.includes(titleToMatch)) {
     shopCounter = shopCounter + 1
-    console.log('appending')
     $(shopDisplay).append(`
     <div class="shop-item shop-box">
       <h2 class="dark-font">Title: ${currentTitle}</h2>
       <h3 class="dark-font">Price: ${bookResults[shopSearchNumber].items[i].saleInfo.listPrice.amount} ${bookResults[shopSearchNumber].items[i].saleInfo.listPrice.currencyCode}</h3>
-      <a href="${bookResults[shopSearchNumber].items[i].saleInfo.buyLink}" target="_blank" class="light-font">Buy this book on Google</a>
+      <a href="${bookResults[shopSearchNumber].items[i].saleInfo.buyLink}" target="_blank" class="light-font">Buy this book</a>
     </div>
     `)
     }

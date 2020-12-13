@@ -28,6 +28,7 @@ p {
 form label {
   font-size: 13px;
   font-family: 'Julius Sans One';
+  font-weight: bold;
   color: white;
 }
 
@@ -69,23 +70,24 @@ form input {
 
 
 /* button styling */
-#submit-button, .js-shop {
-  cursor: pointer;
-
-}
-
-button, a {
+button, a, #submit-button {
   font-family: 'Raleway';
   font-size: 12px;
   border: solid 2px black;
   border-radius: 5px;
   color: white;
   background-color: purple;
-  padding: 2px;
+  padding: 4px;
   cursor: pointer;
   text-decoration: none;
 }
 
+#submit-button {
+  font-size: 18px;
+}
+a:hover, button:hover {
+  color: black;
+}
 
 /* flexbox styling */
 .container {
@@ -100,27 +102,27 @@ button, a {
 
 .results {
   display: flex;
-  flex-direction: column; 
-}
-
-.shop-results {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-around; 
 }
 
 .item {
   margin: 10px 0 10px 0;
-  padding: 10px 0 10px 0;
+  padding: 10px;
   text-align: center;
-  /* flex: 0 30%; */
+  flex: 0 90%;
 }
+
+.shop-results {
+  display: flex;
+  justify-content: center;
+}
+
 
 .shop-item {
   margin: 10px 0 10px 0;
   padding: 10px 0 10px 0;
   text-align: center;
-  flex: 0 auto;
 }
 
 
@@ -157,8 +159,8 @@ button, a {
   text-align: center;
 }
 
-/* ipad size styling */
-@media all and (min-width: 600px){
+/* responsive styling for various sizes */
+@media all and (min-width: 600px) {
   h1 {
     font-size: 40px;
   }
@@ -177,18 +179,16 @@ button, a {
   form input {
     font-size: 13px;
   }
-  button, a {
+  button, a, #submit-button {
     font-size: 12px;
     padding: 3px;
   }
+
   .item {
-    margin: 10px 0 10px 0;
-    padding: 10px 0 10px 0;
-    text-align: center;
-    flex: 0 50%;
+    flex: 0 45%;
   }
 }
-@media all and (min-width: 768px){
+@media all and (min-width: 768px) {
   h1 {
     font-size: 44px;
   }
@@ -207,24 +207,12 @@ button, a {
   form input {
     font-size: 14px;
   }
-  button, a {
+  button, a, #submit-button {
     font-size: 14px;
     padding: 3px;
   }
-  .results {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; 
-  }
-
-  .item {
-    margin: 10px 0 10px 0;
-    padding: 10px 0 10px 0;
-    text-align: center;
-    flex: 0 30%;
-  }
 } 
-@media all and (min-width: 992px){
+@media all and (min-width: 992px) {
   h1 {
     font-size: 50px;
   }
@@ -243,25 +231,16 @@ button, a {
   form input {
     font-size: 16px;
   }
-  button, a {
+  button, a, #submit-button {
     font-size: 17px;
     padding: 5px;
   }
 
-  .results {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; 
-  }
   .item {
-    margin: 10px 0 10px 0;
-    padding: 10px 0 10px 0;
-    text-align: center;
     flex: 0 30%;
   }
-
 }
-@media all and (min-width: 1200px){
+@media all and (min-width: 1200px) {
   h1 {
     font-size: 56px;
   }
@@ -280,19 +259,8 @@ button, a {
   form input {
     font-size: 18px;
   }
-  button, a {
-    font-size: 20px;
+  button, a, #submit-button {
+    font-size: 22px;
     padding: 5px;
-  }
-  .results {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; 
-  }
-  .item {
-    margin: 10px 0 10px 0;
-    padding: 10px 0 10px 0;
-    text-align: center;
-    flex: 0 30%;
   }
 }

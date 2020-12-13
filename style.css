@@ -82,9 +82,6 @@ button, a, #submit-button {
   text-decoration: none;
 }
 
-#submit-button {
-  font-size: 18px;
-}
 a:hover, button:hover {
   color: black;
 }
@@ -113,11 +110,15 @@ a:hover, button:hover {
   flex: 0 90%;
 }
 
+.extra-padding {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .shop-results {
   display: flex;
   justify-content: center;
 }
-
 
 .shop-item {
   margin: 10px 0 10px 0;

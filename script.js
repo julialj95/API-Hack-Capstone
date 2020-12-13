@@ -100,7 +100,7 @@ function displayRecResults(resultsJson){
     <h2 class="js-book-title">${resultsJson[i].items[0].volumeInfo.title}</h2>
     <h3>${resultsJson[i].items[0].volumeInfo.authors}</h3>
     <img src="${resultsJson[i].items[0].volumeInfo.imageLinks.thumbnail}" alt="${resultsJson[i].items[0].volumeInfo.title} cover photo">
-    <p>${resultsJson[i].items[0].volumeInfo.description}</p>
+    <p class="extra-padding">${resultsJson[i].items[0].volumeInfo.description}</p>
     <button class="js-shop">Shop this book</button>
     <div class="hidden-id">${i}</div>
     <div class="hidden shopResults"></div>

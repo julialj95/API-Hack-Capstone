@@ -1,4 +1,4 @@
-# Story-Seeker.io
+# Story Seeker
 ## About
 This app allows users to receive book recommendations based on their submission of a book title and then see options for purchasing the recommended books. 
 ## Screenshots

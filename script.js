@@ -7,7 +7,7 @@ function getRecTitlesUrl(recSearchTerm){
   const apiKey = '393554-StudentC-MF9HETN1'
 
   const recParams = {
-    q: "book:" + recSearchTerm,
+    q: 'book:' + recSearchTerm,
     k: apiKey,
     type: 'books',
     callback: 'getRecInfo'
@@ -43,21 +43,22 @@ function insertScript(recSearchTerm){
 
 function getRecInfo(recTitleJson){
   if (recTitleJson.Similar.Results.length === 0){
-    $(".loadingBox").addClass('hidden')
-    $(".results").html("<p>Sorry! No results were found for that search. Try a different book title.</p>").addClass('bg-box')
+    $('.loadingBox').addClass('hidden')
+    $('.results').html('<p>Sorry! No results were found for that search. Try a different book title.</p>').addClass('bg-box')
   }
   else {
   const recInfoBaseUrl = 'https://www.googleapis.com/books/v1/volumes'
   const googleApiKey = 'AIzaSyDEde2t4gSXAMcNjSVn56s2RfIu6G7R5ZM'
-  const recInfoArray = [];
+  const recInfoArray = []
   for (let i = 0; i < 12; i++){
     const recInfoParams = {
     q: recTitleJson.Similar.Results[i].Name,
     printType: 'books',
     key: googleApiKey
     }
-  const recInfoQueryString = formatRecInfoQueryParams(recInfoParams)
-  const recInfoUrl = recInfoBaseUrl + '?' + recInfoQueryString
+    const recInfoQueryString = formatRecInfoQueryParams(recInfoParams)
+    const recInfoUrl = recInfoBaseUrl + '?' + recInfoQueryString
+   
     recInfoArray.push(fetch(recInfoUrl))
   }
 
@@ -82,41 +83,40 @@ function formatRecInfoQueryParams(recInfoParams){
 function watchRecForm(){
   $('#js-book-search-form').on('submit', event => {
     event.preventDefault()
-    $(".loadingBox").removeClass("hidden")
-    const recSearchTerm = $("#js-search-term").val()
+    $('.loadingBox').removeClass('hidden')
+    const recSearchTerm = $('#js-search-term').val()
     insertScript(recSearchTerm)
     getRecTitlesUrl(recSearchTerm)
     $('#js-search-term').val('')
-    $(".shop").addClass('hidden')
+    $('.shop').addClass('hidden')
   })
 }
 
 function displayRecResults(resultsJson){
-  $(".loadingBox").addClass('hidden')
-  $("#js-rec-results").empty()
+  $('.loadingBox').addClass('hidden')
+  $('#js-rec-results').empty()
   for (let i = 0; i < 12; i++){
-  $("#js-rec-results").append(`
-  <div class="item recBox">
-    <h2 class="js-book-title">${resultsJson[i].items[0].volumeInfo.title}</h2>
-    <h3>${resultsJson[i].items[0].volumeInfo.authors}</h3>
-    <img src="${resultsJson[i].items[0].volumeInfo.imageLinks.thumbnail}" alt="${resultsJson[i].items[0].volumeInfo.title} cover photo">
-    <p class="extra-padding">${resultsJson[i].items[0].volumeInfo.description}</p>
-    <button class="js-shop">Shop this book</button>
-    <div class="hidden-id">${i}</div>
-    <div class="hidden shopResults"></div>
-  </div>`)}
+    $('#js-rec-results').append(`
+    <div class='item recBox'>
+      <h2 class='js-book-title'>${resultsJson[i].items[0].volumeInfo.title}</h2>
+      <h3>${resultsJson[i].items[0].volumeInfo.authors}</h3>
+      <img src='${resultsJson[i].items[0].volumeInfo.imageLinks.thumbnail}' alt='${resultsJson[i].items[0].volumeInfo.title} cover photo'>
+      <p class='extra-padding'>${resultsJson[i].items[0].volumeInfo.description}</p>
+      <button class='js-shop'>Shop this book</button>
+      <div class='hidden-id'>${i}</div>
+      <div class='hidden shopResults'></div>
+    </div>`)}
   $('.results').removeClass('hidden')
   }
 
 function watchShopLinkOnRecPage(){
   $('body').on('click','button.js-shop', event=> {
     event.preventDefault
-    $(".shopResults").empty()
+    $('.shopResults').empty()
     $(event.currentTarget).next().next().removeClass('hidden')
     const shopSearchNumber = $(event.currentTarget).next().text()
     const shopDisplay = $(event.currentTarget).next().next()
     displayShopResults(bookResults, shopSearchNumber, shopDisplay)
-    
   })
 }
 
@@ -126,29 +126,32 @@ function displayShopResults(bookResults, shopSearchNumber, shopDisplay){
     const titleToMatch = bookResults[shopSearchNumber].items[0].volumeInfo.title
     const currentTitle = bookResults[shopSearchNumber].items[i].volumeInfo.title
     
-    if(bookResults[shopSearchNumber].items[i].saleInfo.saleability === "FOR_SALE" && currentTitle.includes(titleToMatch)) {
-    shopCounter = shopCounter + 1
-    $(shopDisplay).append(`
-    <div class="shop-item shop-box">
-      <h2 class="dark-font">Title: ${currentTitle}</h2>
-      <h3 class="dark-font">Price: ${bookResults[shopSearchNumber].items[i].saleInfo.listPrice.amount} ${bookResults[shopSearchNumber].items[i].saleInfo.listPrice.currencyCode}</h3>
-      <a href="${bookResults[shopSearchNumber].items[i].saleInfo.buyLink}" target="_blank" class="light-font">Buy this book</a>
-    </div>
-    `)
+    if(bookResults[shopSearchNumber].items[i].saleInfo.saleability === 'FOR_SALE' && currentTitle.includes(titleToMatch)) {
+      shopCounter = shopCounter + 1
+      $(shopDisplay).append(`
+        <div class='shop-item shop-box'>
+          <h2 class='dark-font'>Title: ${currentTitle}</h2>
+          <h3 class='dark-font'>Price: ${bookResults[shopSearchNumber].items[i].saleInfo.listPrice.amount} ${bookResults[shopSearchNumber].items[i].saleInfo.listPrice.currencyCode}</h3>
+          <a href='${bookResults[shopSearchNumber].items[i].saleInfo.buyLink}' target='_blank' class='light-font'>Buy this book</a>
+        </div>`)
     }
   }
-  $(".shopResults").removeClass("hidden")
+  $('.shopResults').removeClass('hidden')
   errorMessage(shopCounter, shopDisplay)
 }
 
 function errorMessage(shopCounter, shopDisplay){
   if (shopCounter === 0){
     $(shopDisplay).append(`
-    <div class="shop-item">
-      <p>Sorry! That book is not currently for sale.</p>
-    </div>`)
+      <div class='shop-item'>
+        <p>Sorry! That book is not currently for sale.</p>
+      </div>`)
   }
 }
 
-$(watchRecForm)
-$(watchShopLinkOnRecPage)
+function handleApp(){
+  watchRecForm()
+  watchShopLinkOnRecPage()
+}
+
+$(handleApp)

@@ -59,12 +59,12 @@ form input {
 
 /* background */
 .bg-start-image {
-  background-image: url(curved-library-1.jpg);
+  background-image: url(images/curved-library-1.jpg);
   background-size: cover;
 }
 
 .bg-search-image {
-  background-image: url(dark-library.jpg);
+  background-image: url(images/dark-library.jpg);
   background-size: cover;
 }
 

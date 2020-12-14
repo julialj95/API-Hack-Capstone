@@ -8,13 +8,11 @@ This app allows users to receive book recommendations based on their submission 
 ![Search Page](/images/search-page.png)
 ### Example Results:
 ![Example Results](/images/example-results.png)
--------------------
 ## Built with:
 1. HTML
 2. CSS
 3. Javascript
 4. Jquery
--------------------
-## Demo
+## Live Link
 https://julialj95.github.io/API-Hack-Capstone/ 
--------------------
+

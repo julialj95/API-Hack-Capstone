@@ -92,11 +92,9 @@ function watchRecForm(){
     $('#js-rec-results').empty();
     $('.loadingBox').removeClass('hidden');
     const recSearchTerm = $('#book-search').val();
-    // const recSearchTerm = $('#js-search-term').val();
     insertScript(recSearchTerm);
     getRecTitlesUrl(recSearchTerm);
     $('#book-search').val('');
-    // $('#js-search-term').val('');
     $('.shop').addClass('hidden');
   })
 }

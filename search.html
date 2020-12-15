@@ -7,25 +7,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-search-image">
-  <header>
-    <div>
-      <div class="container bg-box">
-       <h1>Story Seeker</h1>
-      </div>
-    </header>
-    <main>
-      <div class="container bg-box">
+  <header class="container bg-box">
+    <h1>Story Seeker</h1>
+  </header>
+  <main>
+    <section class="container bg-box">
       <form id="js-book-search-form">
-       <label for="book-search">Search a book that you enjoy!<br>*Use a complete book title</label><br>
-        <input type="text" name="book-search" id="js-search-term" autofocus="on" placeholder="Harry Potter and the Sorcerer's Stone"required><br>
+        <label for="book-search">Search a book that you enjoy!<br>*Use a complete book title</label><br>
+          <input type="text" name="book-search" id="js-search-term" autofocus placeholder="Harry Potter and the Sorcerer's Stone" required><br>
         <button class="js-rec">Search now!</button>
       </form>
-      </div>
-    </div>
-    <div class="hidden loadingBox">
-      <h2 class="dark-font">Loading results...<h2>
-    </div>
-    <div class="hidden results" id="js-rec-results"></div>
+    </section>
+    <section class="hidden loadingBox">
+      <h2 class="dark-font">Loading results...</h2>
+    </section>
+    <section class="hidden results" id="js-rec-results"></section>
   </main>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script src="script.js"></script>

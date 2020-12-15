@@ -61,11 +61,17 @@ form input {
 .bg-start-image {
   background-image: url(images/curved-library-1.jpg);
   background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .bg-search-image {
   background-image: url(images/dark-library.jpg);
   background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 
@@ -139,7 +145,7 @@ a:hover, button:hover {
 .recBox {
   border: solid;
   border-color: white;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.9);
   padding: 10px;
   border-radius: 12px;
 }

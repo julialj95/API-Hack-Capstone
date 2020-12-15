@@ -77,7 +77,7 @@ Promise.all(recInfoArray)
 function displayCatchError(err){
   console.log(err)
   $('.results').html('<p>Sorry! Your request cannot be processed. Please try again in a moment.</p>').addClass('bg-box');
-  $('results').removeClass('hidden')
+  $('.results').removeClass('hidden')
 }
 
 
@@ -91,10 +91,12 @@ function watchRecForm(){
     event.preventDefault();
     $('#js-rec-results').empty();
     $('.loadingBox').removeClass('hidden');
-    const recSearchTerm = $('#js-search-term').val();
+    const recSearchTerm = $('#book-search').val();
+    // const recSearchTerm = $('#js-search-term').val();
     insertScript(recSearchTerm);
     getRecTitlesUrl(recSearchTerm);
-    $('#js-search-term').val('');
+    $('#book-search').val('');
+    // $('#js-search-term').val('');
     $('.shop').addClass('hidden');
   })
 }
